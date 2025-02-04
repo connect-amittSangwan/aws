@@ -1,0 +1,56 @@
+AWS Cloud Use Case:
+ - AWS enables you to build sophisticated , scalable applications.
+ - Applicable to a diverse set of industries.
+ - Use cases include:
+        - Enterprise IT, Backup and storage, Big Data analytics.
+        - Website hosting , mobile and social Apps.
+        - Gaming
+------------------------------------------------------------------------------------------------------------------------
+
+AWS Global Infrastructure:
+    - AWS Regions
+    - AWS Availability Zones
+    - AWS Data Centers
+    - AWS Edge Locations/ Point of Presence.
+
+  Reference: https://infrastructure.aws/ , */resources/AWS_Global_Infra.png
+
+AWS Regions:
+- AWS has regions all around the world.
+- Names can be us-east-I , eu-west-3...
+- A region is cluster of data centers.
+- Most AWS services are region scoped.
+
+How to choose an AWS Region:
+- Compliance: data governance and legal requirement, data never leaves a region without explicit permissions.
+- Proximity to costumers: reduced latency.
+- Availability of Services: new services and new features are not available in every region.
+- Pricing: Pricing varies region to region andis transparent in the service pricing page.
+
+Availability Zones:
+- Each regions has many availability zones: ( min 3 max 6 , usually 3 ), example:
+                ap-southeast-2a
+                ap-southeast-2b
+                ap-southeast-2c
+
+- Each availability zone ( AZ ) is one or more discrete data centers with redundant power, networking and connectivity.
+- They are separated from each other so that they are isolated from disasters.
+- They are connected with high bandwidth ultra low latency networking.
+
+AWS Point of Presence ( Edge Locations ):
+  400+ Point of presence , 90+ counties and 400+ cities.
+
+------------------------------------------------------------------------------------------------------------------------
+
+AWS has global services:
+- Identity and Access management ( IAM )
+- Route 53 ( DNS Service )
+- CloudFront ( Content Delivery network )
+- WAF ( Web Application Firewall )
+
+Most AWS Services are region scoped:
+- Amazon EC2 ( Infrastructure as a Service )
+- Elastic Beanstalk ( Platform as a Service )
+- Lambda ( Function as a Service )
+- Rekognition ( Software as a Service )
+

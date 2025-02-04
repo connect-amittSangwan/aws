@@ -1,0 +1,75 @@
+What is cloud computing:
+- On demand delivery of compute power , database storage, applications and other IT resource
+- Pay-as-you-go pricing.
+- Right type and size of computing resources.
+- access to as many resources you need, almost instantly.
+
+- AWS owns and maintains the network-connected hardware required for these application services.
+
+Example: Netflix , build on aws!
+
+------------------------------------------------------------------------------------------------------------------------
+
+Deployment models of the cloud:
+
+Private cloud: cloud services used by a single org, not exposed to the public, complete control, security for sensitive
+applications, meets specific business needs.
+
+Public Cloud: Cloud resources owned and operated by a third partly cloud service provider delivered over the internet
+Example: AWS, google cloud , azure
+
+Characteristics:
+- On demand self service
+- Broad network access
+- Multi-tenancy and resource pooling
+- Rapid elasticity and scalability.
+- Measured service.
+
+Advantages:
+- Pay on demand , dont own hardware
+- Reduced total cost of ownership
+- Benefits from massive economies of scale, prices reduced as aws is more efficient due to large scale.
+- Increase speed and agility.
+- Stop spending money running and maintaining data centers.
+- Go global in minutes , leverage the AWS global infrastructure.
+
+Problem solved:
+- Flexible: Change resource type when needed.
+- Cost Effective: Pay as  you go.
+- Scalability: Accommodate larger loads by making hardware stronger.
+- Elasticity: Ability to scale out and scale-in when needed.
+- High availability and fault tolerance
+- Agility: Rapidly develop , test and launch software applications.
+
+Hybrid Cloud: Keeps some services on premises and extend some copabilities to the cloud , so that can control sensitive
+assets in your private infrastructure.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Types Of Cloud Computing:
+( Resource: Notes/IaaS_PaaS_SaaS.png )
+
+1) Infrastructure as a Service ( IaaS )
+    - Provide building blocks for cloud IT
+    - Provides networking, computers, data storage space.
+    - Highest level of flexibility.
+    - Easy parallel with traditional on premises IT
+
+2.) Platform as a Service ( PaaS )
+    - Removes the need for your organization to manage the underlying infrastructure
+    - Focus on the deployment and management of your application.
+
+3.) Software as a Service ( SaaS )
+    - Completed product that is run and managed by the service provider.
+
+------------------------------------------------------------------------------------------------------------------------
+
+PRICING:
+
+AWS has 3 fundamentals , following the pay-as-you-go pricing model:
+1.) Compute: Pay for your compute time.
+2.) Storage: Pay for data stored in the cloud.
+3.) Data transfer OUT of the cloud ( data transfer IN is free )
+
+        Solves the expensive issue of traditional IT.
+

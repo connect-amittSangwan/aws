@@ -1,0 +1,69 @@
+ How Websites Work:
+
+ Client ( Have Some IP Address ) -------------- Network ------------------- Server ( Have Some IP Address )
+ _______________________________________________________________________________________________________________________
+
+ Server Composition:
+    - CPU
+    - RAM
+
+    - Storage Data
+    - Database: Store Data In A Structured Way
+
+    - Network: Routers,Switch, DNS Servers
+
+ _______________________________________________________________________________________________________________________
+
+IT Terminology:
+Network:
+A network is a collection of devices (such as computers, servers, routers, switches, and other networking hardware) that
+are connected to share data and resources. Networks can be:
+
+- Local Area Networks (LANs): Used within a small area like an office or home.
+- Wide Area Networks (WANs): Spans a large geographical area, such as the internet.
+
+How It Works:
+ - Devices communicate using protocols like TCP/IP.
+ - Data is broken into small packets and transmitted through wired (Ethernet cables, fiber optics) or wireless
+   (Wi-Fi, cellular) connections.
+ - These packets travel through various devices like routers and switches to reach their destination.
+
+ _______________________________________________________________________________________________________________________
+
+
+Router:
+A router is a networking device that connects different networks and directs data packets to their destination, usually
+between your local network and the internet.
+
+How It Works:
+
+ - When you send a request (e.g., opening a website), the router examines the IP address of the destination.
+ - It determines the best path for sending the data through the internet using routing tables and protocols like BGP
+   (Border Gateway Protocol).
+ - The router sends packets to the next-hop device (another router or the destination server).
+ - When the server responds, the data travels back through routers to reach your device.
+
+Key Features:
+- Assigns local IP addresses to devices in your home or office (via DHCP).
+- Uses NAT (Network Address Translation) to manage multiple devices sharing one public IP.
+- Provides firewall security to filter traffic.
+
+ _______________________________________________________________________________________________________________________
+
+
+Switch:
+A switch is a networking device that connects multiple devices in a local network (LAN) and directs data packets to the
+correct destination within that network.
+
+How It Works:
+
+ - When a device (e.g., computer) sends data, the switch examines the MAC address (physical address) in the packet.
+ - It looks up the MAC address in its switching table to find the correct port where the destination device is connected.
+ - The switch forwards the packet only to the intended device, unlike a hub, which broadcasts data to all devices.
+
+Key Features:
+- Works at Layer 2 (Data Link Layer) of the OSI model.
+- Improves network efficiency by reducing collision domains.
+- Can be managed or unmanaged (managed switches allow advanced configurations).
+
+ _______________________________________________________________________________________________________________________

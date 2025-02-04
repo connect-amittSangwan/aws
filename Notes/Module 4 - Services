@@ -1,0 +1,12 @@
+1.) Identity and Access Management ( IAM ) , Global Service
+
+    - Root account: created by default, should not be used or shared.
+    - Users: Users are people within organization , can be grouped.
+    - Group can not contains other groups but only users.
+    - Users dont have to belong to a group and user can belong to multiple groups.
+
+   Why we create user/ group:
+   - Users and Groups, can be assigned a JSON document called policies, to allow permissions to use services.
+   - Policies define the permission of the users.
+   - In AWS you apply the least privilege principle, dont give more permissions than a user needs.
+
