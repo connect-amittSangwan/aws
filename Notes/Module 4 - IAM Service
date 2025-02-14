@@ -1,0 +1,173 @@
+1.) Identity and Access Management ( IAM ) , Global Service
+
+    - Root account: created by default, should not be used or shared.
+    - Users: Users are people within organization , can be grouped.
+    - Group can not contains other groups but only users.
+    - Users dont have to belong to a group and user can belong to multiple groups.
+
+   Why we create user/ group:
+   - Users and Groups, can be assigned a JSON document called policies ( IAM Policy ), to allow permissions to use services.
+   - Policies define the permission of the users.
+   - In AWS you apply the least privilege principle, dont give more permissions than a user needs.
+
+IAM Policy Structure:
+-------------------------------   EXAMPLE    ---------------------------------------------------------------------------
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+------------------------------------------------------------------------------------------------------------------------
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AIOPSServiceAccess",
+            "Effect": "Allow",
+            "Action": [
+                "access-analyzer:GetAnalyzer",
+                "xray:List*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AIOPSS3AccessForAmplify",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::amplify",
+                "arn:aws:s3:::cdk--assets--*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ViaAWSService": [
+                        "amplify.amazonaws.com"
+                    ],
+                    "aws:PrincipalAccount": [
+                        "${aws:ResourceAccount}"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "AIOPSAPIGatewayAccess",
+            "Effect": "Allow",
+            "Action": [
+                "apigateway:GET"
+            ],
+            "Resource": [
+                "arn:aws:apigateway:*::/restapis",
+                "arn:aws:apigateway:*::/apis/*/stages",
+                "arn:aws:apigateway:*::/apis/*/stages/*"
+            ]
+        }
+    ]
+}
+
+------------------------------------------------------------------------------------------------------------------------
+IAM - Password Policy
+( IAM -> Account Settings )
+
+    - Strong passwords - higher security
+    - In AWS , you can set password policy:
+        - Min length
+        - Require specific character
+        - Allow IAM user to change there password
+        - Password expiration
+        - Prevent password reuse
+
+Multi Factor Authentication ( MFA )
+    - MFA = password + security device you own
+
+Devices options in AWS:
+    - Virtual MFA devices ( google auth , Authy , Duo etc )
+    - Universal 2nd Factor Security Key ( U2F , example Yubikey )
+    - Hardware Key Fob MFA Device
+    - AWS GovCloud
+
+------------------------------------------------------------------------------------------------------------------------
+
+To Access AWS, three options:
+    1.) AWS Management Console ( Password + MFA )
+    2.) AWS Command Line Interface ( CLI ) , protected by access keys.
+                -A tool that enables to interact with AWS services using commands in command line tools.
+                -Direct Access to public APIs of AWS services
+                -Develop scripts to manage resources and automate some of the tasks.
+                -Alternative to management console.
+
+            AWS CLI is build on AWS SDK for python.
+
+    3.) AWS Software  Development Kit ( SDK ) , protected by access keys.
+               -Language specific APIs ( set of libraries )
+               -Enable access and manage AWS services programmatically.
+               -Embedded within your application.
+               Supports: SKDs ( Jva, Python , Javascript , NodeJS, C++ etc )
+
+User Manages there access key. they are secret just like the password.
+
+Access key id ~= username
+Secret Access Key ~= password
+
+------------------------------------------------------------------------------------------------------------------------
+Install AWS CLI : normal steps : google , download and install.
+
+------------------------------------------------------------------------------------------------------------------------
+IAM Roles For Services:
+    - Some AWS service will need to perform actions on your behalf.
+    - To do so , we will assign permissions to AWS services with IAM Roles.
+    - Common roles: EC2 Instance ROles , Lambda Function Roles , ROles for cloudFormation.
+
+    EC2 Instance ( IAM ROle to access aws )
+
+IAM Security Tools:
+    - IAM Credential Reports ( Account Level )
+        list all your account's users and the status of their various credentials .
+
+    - IAM Access Advisor ( User level | groups )
+        Shows service permissions granted to a user and when those services were last used.
+        THIS INFO CAN BE USED TO REVISE POLICIES.
+
+IAM Guidelines and best practices:
+    - Do not use root account except for AWS account setup.
+    - One physical user = one aws user.
+    - Assign users to groups and assign permissions to group.
+    - Create a strong password policy
+    - User and enforce the use of MFA
+    - Create and use roles for giving permissions to AWS services.
+    - Use access keys for programmatic access ( CLI / SDK )
+    - Audit permissions of your account using IAM credentials Report and IAM Access Advisor.
+    - Never share IAM users and Access keys,
+
+ Shared Responsibility Model:
+    AWS:
+        - Infrastructure ( Global network security )
+        - Configurations and vulnerability analysis
+        - Compliance validation
+    USER:
+        - Users, Groups ,Roles, Policies management and monitoring
+        - Enable MFA of all accounts.
+        - Rotate all your keys often.
+        - Use IAM tools to apply appropriate permissions.
+        - Analyse access patterns and review permissions.
+  ------------------------------------------------------------------------------------------------------------------------
+
+  SUMMARY:
+    - Users: mapped to a physical user, has a password for AWS console.
+    - Groups: contains user only.
+    - Policies: JSON Document that outlines permissions for users or group.
+    - Roles: for EC2 instances or AWS Services
+    - Security: MFA + Password Policy
+    - AWS CLI: manage your aws services using command line.
+    - AWS SDK: manage your aws services using programming language.
+    - Access key: access AWS using the CLI and SDK.
+    - Audit: IAM credential report and IAM access advisor.
+

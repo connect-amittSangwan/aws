@@ -1,0 +1,162 @@
+Amazon EC2 ( Elastic Compute Cloud )
+------------------------------------------------------------------------------------------------------------------------
+
+Most popular AWS Offering = Elastic Compute Cloud = Infra as a Service
+    Capabilities:
+        - Renting virtual machines ( EC2 : Elastic Cloud Compute )
+        - Storing data on virtual devices ( EBS )
+        - Distributing load across machines ( ELB : Elastic Load Balancer )
+        - Scaling the service using an auto-scalling group ( ASG : Auto Scaling Group )
+
+------------------------------------------------------------------------------------------------------------------------
+
+    EC2 sizing and configuration options:
+        - OS: Linux , Windows, Mac OS
+        - How much compute power and cores: CPU
+        - How much random access memory: RAM
+        - How much storage space:
+                - Network - attached ( EBS and EFS )
+                - Hardware ( EC2 Instance Store )
+        - Network card: speed of the card , Public IP address.
+        - Firewall rules: security group
+        - Bootstrap script ( configure at first launch ) : EC2 User Data
+
+    EC2 User Data:
+        - It is possible to bootstrap our instances using an EC2 User data script.
+        * bootstrapping means launching commands when a machine starts.
+        - That script is only run once at the instance first start.
+        - EC2 user data is used to automate boot tasks such as:
+            - Installing Updates
+            - Installing Software
+            - Download common files from the internet etc.
+
+        EC2 User Data script runs with root user ( sudo )
+------------------------------------------------------------------------------------------------------------------------
+
+    EC2 Instance Types: Examples:
+
+        Instance    vCPU    Mem(Gib)    Storage             NetworkPerformance     EBS Bandwidth(Mbps)
+        t2.micro    1       1           EBS-Only             Low to Moderate
+        t2.xlarge   4       16          EBS-Only             Moderate
+        c5d.4xlarge 16      32          1 x 400 NVMe SSD     Up to 10 Gbps              4750
+        r5.16xlarge 64      512         EBS Only             20 Gbps                    13600
+
+    m5.2xlarge
+    m: instance class
+    5: generation
+    2xlarge: size
+
+  EC2 instace types:
+  - General Purpose: (balanced) ( example: t2.micro )
+        - Compute
+        - Memory
+        - Networking
+  - Compute Optimised: ( High level processor ) ( Example: c4,c5 etc )
+        -  ML , scientif modeling , dedicated gaming server etc
+  - Memory Optimised ( High RAM ) ( example: R4, R5 , X1 , z1d )
+        - Application processing real-time processing of big unstructured data.
+  - Storage Optimised ( For large data sets on local storage )
+
+------------------------------------------------------------------------------------------------------------------------
+Security Group:
+A security group is a set of firewall rules that regulate inbound and outbound traffic for an instance.
+Inbound rules manage incoming traffic, while outbound rules control outgoing traffic. Multiple security
+groups can be assigned to an instance, and all rules are evaluated collectively. If no specific value
+is set, the source template or default API value is used.
+
+
+User Data Script for bootstrapping:
+------------------------------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+# This script runs on an EC2 instance at launch via user data.
+
+# Update all installed packages to the latest version
+yum update -y
+
+# Install the Apache HTTP server (httpd package)
+yum install -y httpd
+
+# Start the Apache web server
+systemctl start httpd
+
+# Enable Apache to start on boot
+systemctl enable httpd
+
+# Define the HTML file location
+INDEX_FILE="/var/www/html/index.html"
+
+# Write the hostname and heading to index.html
+echo "<h1>Bootstrapping User Data Script Executed on instance: $(hostname -f)</h1>" > $INDEX_FILE
+
+# Append the script itself to index.html
+echo "<pre>" >> $INDEX_FILE
+cat $0 >> $INDEX_FILE
+echo "</pre>" >> $INDEX_FILE
+
+------------------------------------------------------------------------------------------------------------------------
+
+Key Pointers:
+    - Instance – A virtual server running in AWS.
+    - AMI (Amazon Machine Image) – A pre-configured OS image used to launch EC2 instances.
+    - Instance Type – Defines compute resources like CPU, memory, and networking capacity.
+    - Elastic IP – A static public IP address for an EC2 instance.
+    - Security Group – A virtual firewall that controls inbound and outbound traffic.
+    - Key Pair – A cryptographic key used for SSH access to instances.
+    - EBS (Elastic Block Store) – Persistent block storage for EC2 instances.
+    - Instance Metadata – Data about an instance accessible via a special URL (169.254.169.254).
+    - Auto Scaling – Automatically adjusts the number of instances based on demand.
+    - Load Balancer – Distributes incoming traffic across multiple instances for scalability.
+    - Placement Group – Controls instance placement for better performance (Cluster, Spread, Partition).
+    - EC2 Spot Instance – Discounted instances that run when AWS has spare capacity.
+    - EC2 Reserved Instance – Discounted pricing for long-term instance usage commitment.
+    - EC2 Dedicated Host – A physical server exclusively for your workloads.
+    - User Data – A script that runs on the first boot of an instance for automation.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Security Groups:
+    - Security groups are fundamental of network security in AWS.
+    - They control how traffic is allowed into or out of our EC2 instances.
+    - Security groups only contain allow rules.
+    - Security groups rules can reference by IP or by security group
+
+    - Acts as a firewall on EC2 instances.
+    - Regulates:
+            - Access to ports
+            - Authorised IP ranges: IPv4 - IPv6
+            - Control of inbound network ( From other to the instance )
+            - Control of outbound network ( From the instance to other )
+    - Can be attached to multiple instances.
+    - Locked down to a region / VPC combination.
+    - Its good to maintain one separate security group for SSH access.
+    - By default : all inbound traffic is blocked outbound traffic is authorised.
+
+------------------------------------------------------------------------------------------------------------------------
+Some Ports to know:
+    22: SSH ( Secure Shell )
+    21: FTP ( File Transfer Protocol )
+    22: SFTP ( Secure File Transfer Protocol )
+    80: HTTP ( access unsecured websites )
+    443: HTTPS ( access secured websites )
+    3389: RDP ( Remote Desktop Protocol , log into windows instance )
+
+ SSH Summary Table:
+
+ SSH ( Port number : 22 ) allows you to control a remote machine, all using the command line
+    SSH : Mac , Linux , windows 10+
+    Putty: - Windows 10
+    EC2 Instance Connect: For everyone  ( It uses the ssm inbound rule , behind the scene using ssh )
+
+      ssh -i pemfile.pem ec2-user@publicIP
+
+      Why Use chmod 400?
+        - It restricts the key file to read-only for the owner (you) and removes all permissions for others.
+        - SSH will reject a key if it's too open (e.g., chmod 644 or chmod 777).
+        - The 0400 and 400 are equivalent because leading zeros indicate octal notation, but 400 is more commonly used.
+
+
+Issues you can face:
+    - Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
+      You are using the wrong security key or not using a security key.

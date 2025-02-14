@@ -2,17 +2,17 @@ What is cloud computing:
 - On demand delivery of compute power , database storage, applications and other IT resource
 - Pay-as-you-go pricing.
 - Right type and size of computing resources.
-- access to as many resources you need, almost instantly.
+- Access to as many resources you need, almost instantly.
 
 - AWS owns and maintains the network-connected hardware required for these application services.
 
-Example: Netflix , build on aws!
+Example: Netflix,   build on aws!
 
 ------------------------------------------------------------------------------------------------------------------------
 
 Deployment models of the cloud:
 
-Private cloud: cloud services used by a single org, not exposed to the public, complete control, security for sensitive
+Private cloud: Cloud services used by a single org, not exposed to the public, complete control, security for sensitive
 applications, meets specific business needs.
 
 Public Cloud: Cloud resources owned and operated by a third partly cloud service provider delivered over the internet

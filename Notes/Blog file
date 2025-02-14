@@ -1,0 +1,373 @@
+ How Websites Work:
+
+ Client ( Have Some IP Address ) -------------- Network ------------------- Server ( Have Some IP Address )
+ _______________________________________________________________________________________________________________________
+
+ Server Composition:
+    - CPU
+    - RAM
+
+    - Storage Data
+    - Database: Store Data In A Structured Way
+
+    - Network: Routers,Switch, DNS Servers
+
+ _______________________________________________________________________________________________________________________
+
+IT Terminology:
+Network:
+A network is a collection of devices (such as computers, servers, routers, switches, and other networking hardware) that
+are connected to share data and resources. Networks can be:
+
+- Local Area Networks (LANs): Used within a small area like an office or home.
+- Wide Area Networks (WANs): Spans a large geographical area, such as the internet.
+
+How It Works:
+ - Devices communicate using protocols like TCP/IP.
+ - Data is broken into small packets and transmitted through wired (Ethernet cables, fiber optics) or wireless
+   (Wi-Fi, cellular) connections.
+ - These packets travel through various devices like routers and switches to reach their destination.
+
+ _______________________________________________________________________________________________________________________
+
+
+Router:
+A router is a networking device that connects different networks and directs data packets to their destination, usually
+between your local network and the internet.
+
+How It Works:
+
+ - When you send a request (e.g., opening a website), the router examines the IP address of the destination.
+ - It determines the best path for sending the data through the internet using routing tables and protocols like BGP
+   (Border Gateway Protocol).
+ - The router sends packets to the next-hop device (another router or the destination server).
+ - When the server responds, the data travels back through routers to reach your device.
+
+Key Features:
+- Assigns local IP addresses to devices in your home or office (via DHCP).
+- Uses NAT (Network Address Translation) to manage multiple devices sharing one public IP.
+- Provides firewall security to filter traffic.
+
+ _______________________________________________________________________________________________________________________
+
+
+Switch:
+A switch is a networking device that connects multiple devices in a local network (LAN) and directs data packets to the
+correct destination within that network.
+
+How It Works:
+
+ - When a device (e.g., computer) sends data, the switch examines the MAC address (physical address) in the packet.
+ - It looks up the MAC address in its switching table to find the correct port where the destination device is connected.
+ - The switch forwards the packet only to the intended device, unlike a hub, which broadcasts data to all devices.
+
+Key Features:
+- Works at Layer 2 (Data Link Layer) of the OSI model.
+- Improves network efficiency by reducing collision domains.
+- Can be managed or unmanaged (managed switches allow advanced configurations).
+
+ _______________________________________________________________________________________________________________________
+What is cloud computing:
+- On demand delivery of compute power , database storage, applications and other IT resource
+- Pay-as-you-go pricing.
+- Right type and size of computing resources.
+- Access to as many resources you need, almost instantly.
+
+- AWS owns and maintains the network-connected hardware required for these application services.
+
+Example: Netflix,   build on aws!
+
+------------------------------------------------------------------------------------------------------------------------
+
+Deployment models of the cloud:
+
+Private cloud: Cloud services used by a single org, not exposed to the public, complete control, security for sensitive
+applications, meets specific business needs.
+
+Public Cloud: Cloud resources owned and operated by a third partly cloud service provider delivered over the internet
+Example: AWS, google cloud , azure
+
+Characteristics:
+- On demand self service
+- Broad network access
+- Multi-tenancy and resource pooling
+- Rapid elasticity and scalability.
+- Measured service.
+
+Advantages:
+- Pay on demand , dont own hardware
+- Reduced total cost of ownership
+- Benefits from massive economies of scale, prices reduced as aws is more efficient due to large scale.
+- Increase speed and agility.
+- Stop spending money running and maintaining data centers.
+- Go global in minutes , leverage the AWS global infrastructure.
+
+Problem solved:
+- Flexible: Change resource type when needed.
+- Cost Effective: Pay as  you go.
+- Scalability: Accommodate larger loads by making hardware stronger.
+- Elasticity: Ability to scale out and scale-in when needed.
+- High availability and fault tolerance
+- Agility: Rapidly develop , test and launch software applications.
+
+Hybrid Cloud: Keeps some services on premises and extend some copabilities to the cloud , so that can control sensitive
+assets in your private infrastructure.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Types Of Cloud Computing:
+( Resource: Notes/IaaS_PaaS_SaaS.png )
+
+1) Infrastructure as a Service ( IaaS )
+    - Provide building blocks for cloud IT
+    - Provides networking, computers, data storage space.
+    - Highest level of flexibility.
+    - Easy parallel with traditional on premises IT
+
+2.) Platform as a Service ( PaaS )
+    - Removes the need for your organization to manage the underlying infrastructure
+    - Focus on the deployment and management of your application.
+
+3.) Software as a Service ( SaaS )
+    - Completed product that is run and managed by the service provider.
+
+------------------------------------------------------------------------------------------------------------------------
+
+PRICING:
+
+AWS has 3 fundamentals , following the pay-as-you-go pricing model:
+1.) Compute: Pay for your compute time.
+2.) Storage: Pay for data stored in the cloud.
+3.) Data transfer OUT of the cloud ( data transfer IN is free )
+
+        Solves the expensive issue of traditional IT.
+
+AWS Cloud Use Case:
+ - AWS enables you to build sophisticated , scalable applications.
+ - Applicable to a diverse set of industries.
+ - Use cases include:
+        - Enterprise IT, Backup and storage, Big Data analytics.
+        - Website hosting , mobile and social Apps.
+        - Gaming
+------------------------------------------------------------------------------------------------------------------------
+
+AWS Global Infrastructure:
+    - AWS Regions
+    - AWS Availability Zones
+    - AWS Data Centers
+    - AWS Edge Locations/ Point of Presence.
+
+  Reference: https://infrastructure.aws/ , */resources/AWS_Global_Infra.png
+
+AWS Regions:
+- AWS has regions all around the world.
+- Names can be us-east-I , eu-west-3...
+- A region is cluster of data centers.
+- Most AWS services are region scoped.
+
+How to choose an AWS Region:
+- Compliance: data governance and legal requirement, data never leaves a region without explicit permissions.
+- Proximity to costumers: reduced latency.
+- Availability of Services: new services and new features are not available in every region.
+- Pricing: Pricing varies region to region andis transparent in the service pricing page.
+
+Availability Zones:
+- Each regions has many availability zones: ( min 3 max 6 , usually 3 ), example:
+                ap-southeast-2a
+                ap-southeast-2b
+                ap-southeast-2c
+
+- Each availability zone ( AZ ) is one or more discrete data centers with redundant power, networking and connectivity.
+- They are separated from each other so that they are isolated from disasters.
+- They are connected with high bandwidth ultra low latency networking.
+
+AWS Point of Presence ( Edge Locations ):
+  400+ Point of presence , 90+ counties and 400+ cities.
+
+------------------------------------------------------------------------------------------------------------------------
+
+AWS has global services:
+- Identity and Access management ( IAM )
+- Route 53 ( DNS Service )
+- CloudFront ( Content Delivery network )
+- WAF ( Web Application Firewall )
+
+Most AWS Services are region scoped:
+- Amazon EC2 ( Infrastructure as a Service )
+- Elastic Beanstalk ( Platform as a Service )
+- Lambda ( Function as a Service )
+- Rekognition ( Software as a Service )
+
+1.) Identity and Access Management ( IAM ) , Global Service
+
+    - Root account: created by default, should not be used or shared.
+    - Users: Users are people within organization , can be grouped.
+    - Group can not contains other groups but only users.
+    - Users dont have to belong to a group and user can belong to multiple groups.
+
+   Why we create user/ group:
+   - Users and Groups, can be assigned a JSON document called policies ( IAM Policy ), to allow permissions to use services.
+   - Policies define the permission of the users.
+   - In AWS you apply the least privilege principle, dont give more permissions than a user needs.
+
+IAM Policy Structure:
+-------------------------------   EXAMPLE    ---------------------------------------------------------------------------
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+------------------------------------------------------------------------------------------------------------------------
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AIOPSServiceAccess",
+            "Effect": "Allow",
+            "Action": [
+                "access-analyzer:GetAnalyzer",
+                "xray:List*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AIOPSS3AccessForAmplify",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::amplify",
+                "arn:aws:s3:::cdk--assets--*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ViaAWSService": [
+                        "amplify.amazonaws.com"
+                    ],
+                    "aws:PrincipalAccount": [
+                        "${aws:ResourceAccount}"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "AIOPSAPIGatewayAccess",
+            "Effect": "Allow",
+            "Action": [
+                "apigateway:GET"
+            ],
+            "Resource": [
+                "arn:aws:apigateway:*::/restapis",
+                "arn:aws:apigateway:*::/apis/*/stages",
+                "arn:aws:apigateway:*::/apis/*/stages/*"
+            ]
+        }
+    ]
+}
+
+------------------------------------------------------------------------------------------------------------------------
+IAM - Password Policy
+( IAM -> Account Settings )
+
+    - Strong passwords - higher security
+    - In AWS , you can set password policy:
+        - Min length
+        - Require specific character
+        - Allow IAM user to change there password
+        - Password expiration
+        - Prevent password reuse
+
+Multi Factor Authentication ( MFA )
+    - MFA = password + security device you own
+
+Devices options in AWS:
+    - Virtual MFA devices ( google auth , Authy , Duo etc )
+    - Universal 2nd Factor Security Key ( U2F , example Yubikey )
+    - Hardware Key Fob MFA Device
+    - AWS GovCloud
+
+------------------------------------------------------------------------------------------------------------------------
+
+To Access AWS, three options:
+    1.) AWS Management Console ( Password + MFA )
+    2.) AWS Command Line Interface ( CLI ) , protected by access keys.
+                -A tool that enables to interact with AWS services using commands in command line tools.
+                -Direct Access to public APIs of AWS services
+                -Develop scripts to manage resources and automate some of the tasks.
+                -Alternative to management console.
+
+            AWS CLI is build on AWS SDK for python.
+
+    3.) AWS Software  Development Kit ( SDK ) , protected by access keys.
+               -Language specific APIs ( set of libraries )
+               -Enable access and manage AWS services programmatically.
+               -Embedded within your application.
+               Supports: SKDs ( Jva, Python , Javascript , NodeJS, C++ etc )
+
+User Manages there access key. they are secret just like the password.
+
+Access key id ~= username
+Secret Access Key ~= password
+
+------------------------------------------------------------------------------------------------------------------------
+Install AWS CLI : normal steps : google , download and install.
+
+------------------------------------------------------------------------------------------------------------------------
+IAM Roles For Services:
+    - Some AWS service will need to perform actions on your behalf.
+    - To do so , we will assign permissions to AWS services with IAM Roles.
+    - Common roles: EC2 Instance ROles , Lambda Function Roles , ROles for cloudFormation.
+
+    EC2 Instance ( IAM ROle to access aws )
+
+IAM Security Tools:
+    - IAM Credential Reports ( Account Level )
+        list all your account's users and the status of their various credentials .
+
+    - IAM Access Advisor ( User level )
+        Shows service permissions granted to a user and when those services were last used.
+        THIS INFO CAN BE USED TO REVISE POLICIES.
+
+IAM Guidelines and best practices:
+    - Do not use root account except for AWS account setup.
+    - One physical user = one aws user.
+    - Assign users to groups and assign permissions to group.
+    - Create a strong password policy
+    - User and enforce the use of MFA
+    - Create and use roles for giving permissions to AWS services.
+    - Use access keys for programmatic access ( CLI / SDK )
+    - Audit permissions of your account using IAM credentials Report and IAM Access Advisor.
+    - Never share IAM users and Access keys,
+
+ Shared Responsibility Model:
+    AWS:
+        - Infrastructure ( Global network security )
+        - Configurations and vulnerability analysis
+        - COmpliance validation
+    USER:
+        - Users, Groups ,Roles, Policies management and monitoring
+        - Enable MFA of all accounts.
+        - Rotate all your keys often.
+        - Use IAM tools to apply appropriate permissions.
+        - Analyse access patterns and review permissions.
+  ------------------------------------------------------------------------------------------------------------------------
+
+  SUMMARY:
+    - Users: mapped to a physical user, has a password for AWS console.
+    - Groups: contains user only.
+    - Policies: JSON Document that outlines permissions for users or group.
+    - Roles: for EC2 instances or AWS Services
+    - Security: MFA + Password Policy
+    - AWS CLI: manage your aws services using command line.
+    - AWS SDK: manage your aws services using programming language.
+    - Access key: access AWS using the CLI and SDK.
+    - Audit: IAM credential report and IAM access advisor.
+
